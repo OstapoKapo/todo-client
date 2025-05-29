@@ -8,7 +8,7 @@ const SigninPage = () => {
     const [password, setPassword] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [role, setRole] = useState<"admin" | "viewer" | "editor">('viewer');
-    const [error, setError] = useState<string | null>(null);
+    const [error, setError] = useState<string | null >(null);
 
     const { handleSignIn } = useAuthActions();
 
@@ -22,8 +22,14 @@ const SigninPage = () => {
         
         try {
             await handleSignIn(email, password, name, role);
-        } catch (error: any) {
-            setError(error.message || 'An unexpected error occurred during login.');
+        } catch (error: unknown) {
+            let message = 'An unexpected error occurred during login.';
+            if (error instanceof Error) {
+                message = error.message;
+            } else if (typeof error === 'string') {
+                message = error;
+            }
+            setError(message);
         }
     }
         

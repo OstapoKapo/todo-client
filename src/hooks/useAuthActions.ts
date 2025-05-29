@@ -14,10 +14,14 @@ export const useAuthActions = (): UseAuthActionsReturn => {
       await signIn(email, password, name, role);
       
       router.push('/');
-    } catch (error: any) {
-        const message = error.response?.data?.message || error.message || 'Unknown error';
-    
-        throw new Error(message);
+    } catch (error: unknown) {
+      let message = 'An unexpected error occurred during login.';
+      if (error instanceof Error) {
+          message = error.message;
+      } else if (typeof error === 'string') {
+          message = error;
+      }  
+      throw new Error(message);
       }
   };
 
@@ -26,9 +30,13 @@ export const useAuthActions = (): UseAuthActionsReturn => {
       await logIn(email, password);
       
       router.push('/');
-    } catch (error: any) {
-      const message = error.response?.data?.message || error.message || 'Unknown error';
-  
+    } catch (error: unknown) {
+      let message = 'An unexpected error occurred during login.';
+      if (error instanceof Error) {
+          message = error.message;
+      } else if (typeof error === 'string') {
+          message = error;
+      }  
       throw new Error(message);
     }
   };

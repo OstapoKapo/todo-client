@@ -23,7 +23,7 @@ export const updateUI = async (tittle: string, footer: string) => {
       }
 }
 
-function handleError(error: any): void {
+function handleError(error: unknown): void {
     if (axios.isAxiosError(error) && error.response) {
       const errorData = error.response.data as ApiErrorResponse;
       throw new Error(errorData.message || 'Unknown API login error');

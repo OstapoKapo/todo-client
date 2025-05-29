@@ -20,8 +20,14 @@ const LogInPage = () => {
         }
         try {
             await handleLogIn(email, password);
-        } catch (error: any) {
-            setError(error.message || 'An unexpected error occurred during login.');
+        } catch (error: unknown) {
+            let message = 'An unexpected error occurred during login.';
+            if (error instanceof Error) {
+                message = error.message;
+            } else if (typeof error === 'string') {
+                message = error;
+            }
+            setError(message);
         }
     }
 
