@@ -1,0 +1,5 @@
+@use "@/app/styles/mixins" as mixins;
+.adminPage{
+    @include mixins.container();
+    background-color: #5BD0E8;
+}

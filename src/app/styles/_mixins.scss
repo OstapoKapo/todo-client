@@ -1,0 +1,43 @@
+
+@mixin text($color, $fontSize, $fontWeight) {
+    color: $color;
+    font-size: $fontSize;
+    font-weight: $fontWeight;
+  }
+  
+  @mixin center(){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+ 
+  @mixin row($height){
+    width: 100%;
+    height: $height;
+    display: flex;
+    align-items: center;
+  }
+  
+  @mixin container(){
+    width: 100%;
+    height: calc(100vh - 140px);  
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  @mixin btn($borderColor){
+    width: 120px;
+    height: 40px;
+    background-color: inherit;
+    @include center();
+    border: 1px solid $borderColor;
+    border-radius: 10px;
+    transition: 0.4s;
+    cursor: pointer;
+  }
+  
+  @mixin meadia($width) {
+    @media (max-width: $width){
+      @content;
+    }
+  }
