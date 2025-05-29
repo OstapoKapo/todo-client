@@ -4,11 +4,14 @@ import styles from './users.module.scss';
 import {User} from '@/types';
 import { useEffect, useState } from 'react';
 import { deleteUser, getAllUsers } from '@/services/user';
+import { useAppSelector } from '@/store/hooks';
 
 
 const UsersComponent = () => {
 
     const [users, setUsers] = useState<User[] | null>(null);
+    const user = useAppSelector(state => state.user);
+    const {data} = user;
 
     useEffect(() => {
         const getUsers = async () => {
@@ -54,7 +57,7 @@ const UsersComponent = () => {
                                 <h4>{user.role}</h4>
                             </div>
                         </div>
-                        <Image onClick={handleDelete} data-id={user._id} src="/icon/trash.png" alt="trashImg" width={60} height={60}></Image>
+                        <Image style={{display: user._id === data?._id ? 'none' : 'flex'}} onClick={handleDelete} data-id={user._id} src="/icon/trash.png" alt="trashImg" width={60} height={60}></Image>
                     </div>
                 ))}
             </div>

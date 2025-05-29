@@ -25,7 +25,7 @@ const ToDoComponent = () => {
             }
         }
         getTodos()
-    },[])
+    },[todos])
 
 
     const handleSumbit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,11 +37,12 @@ const ToDoComponent = () => {
             author:data?.name, 
             createdTime: now
         }
+        setName('');
+        setDeadline('');
         try{
             const res = await createdTodo(todo);
             setTodos(res || []);
             setCreateTodoKey(false);
-
         }catch (error) {
             console.error('Error creating todo:', error);
         }
@@ -53,8 +54,6 @@ const ToDoComponent = () => {
         try{
            const res = await deleteTodo(todoId);
            setTodos(res || []);
-           setName('');
-           setDeadline('');
         }catch(error){
             console.error('Error deleting todo:', error);
         }
@@ -97,8 +96,8 @@ const ToDoComponent = () => {
                             <p>{todo.name}</p>
                             <p>{todo.author}</p>
                             <p>{todo.deadline}</p>
-                            <Image src={'/icon/reload.png'} alt='changeImg' width={50} height={50}></Image>
-                            <Image onClick={handleDelete} data-id={todo._id}src={'/icon/trash.png'} alt='trashImg' width={50} height={50}></Image>
+                            <Image style={{display: data?.role!=='viewer' ? 'flex' : 'none'}}  src={'/icon/reload.png'} alt='changeImg' width={50} height={50}></Image>
+                            <Image style={{display: data?.role==='admin' ? 'flex' : 'none'}} onClick={handleDelete} data-id={todo._id}src={'/icon/trash.png'} alt='trashImg' width={50} height={50}></Image>
                             </div>
                         ))}
                     </div>
