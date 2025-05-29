@@ -21,7 +21,6 @@ export const metadata: Metadata = {
   }
 };
 
-const newUI = await getUI();
 
 
 export default function RootLayout({
@@ -33,9 +32,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${geistMono.variable}`}>
         <ReduxProvider>
-          <Header tittle={newUI?.tittle}/>
+          <Header />
           {children}
-          <Footer footer={newUI?.footer}/>
+          <Footer />
         </ReduxProvider>
       </body>
     </html>

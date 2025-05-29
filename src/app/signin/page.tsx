@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import './page.module.scss';
+import styles from './page.module.scss';
 import { useAuthActions } from '@/hooks/useAuthActions';
 const SigninPage = () => {
     
@@ -35,27 +35,24 @@ const SigninPage = () => {
         
 
     return (
-        <div className="signInPage">
+        <div className={styles.signInPage}>
         <h1>Sign In</h1>
         <form onSubmit={handleSumbit}>
             <div>
-                <label htmlFor="name">Name:</label>
-                <input value={name} onChange={(e) => setName(e.target.value)} name="userName" required />
+                <input placeholder='name' value={name} onChange={(e) => setName(e.target.value)} name="userName" required />
             </div>
             <div>
-                <label htmlFor="email">Email:</label>
-                <input value={email} onChange={(e) => setEmail(e.target.value)} type="email"  name="email" required />
+                <input placeholder='email' value={email} onChange={(e) => setEmail(e.target.value)} type="email"  name="email" required />
             </div>
             <div>
-                <label htmlFor="password">Password:</label>
-                <input value={password} minLength={6} onChange={(e) => setPassword(e.target.value)} type="password"  name="password" required />
+                <input placeholder='password' value={password} minLength={6} onChange={(e) => setPassword(e.target.value)} type="password"  name="password" required />
             </div>
             <select value={role} onChange={(e)=> setRole(e.target.value as "admin" | "viewer" | "editor")} name="role">
                 <option value="editor">Editor</option>
                 <option value="admin">Admin</option>
                 <option value="viewer">Viewer</option>
             </select>
-            {error && <p className="error">{error}</p>}
+            {error &&  <p style={{color: 'red'}}>{error}</p>}
             <button type="submit">Sign In</button>
         </form>
         </div>

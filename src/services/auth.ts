@@ -24,7 +24,14 @@ export const signIn = async (email: string, password: string, name: string, role
 
 export const logout = () => api.post('/auth/logout');
 
-export const checkAuth = () => api.get('/auth/check');
+export const checkAuth = async () => {
+  try{
+  const res =  await  api.get('/auth/me');
+  return res.data;
+  }catch (error) {
+    console.error('Error checking authentication:', error);
+  }
+};
 
 function handleError(error: unknown): void {
   if (axios.isAxiosError(error) && error.response) {

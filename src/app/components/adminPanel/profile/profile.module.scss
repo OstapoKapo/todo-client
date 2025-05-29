@@ -1,0 +1,15 @@
+@use "@/app/styles/mixins" as mixins;
+.profilePage{
+@include mixins.container();
+background-color: #5BD0E8;
+@include mixins.center();
+gap: 20px;
+& button{
+    margin: 0 20px;
+    width: 120px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 10px;
+    color: #fff;
+}
+}

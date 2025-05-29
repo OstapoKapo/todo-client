@@ -23,12 +23,12 @@
             cursor: pointer;
             transition: 0.4s;
             &:hover{
-                color: #000;
+                color: #007BFF;
             }
         }
     }
     .liActive{
-        color: #000;
+        color: #007BFF;
         font-weight: 600;
     }
     & button{

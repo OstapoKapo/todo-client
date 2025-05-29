@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 // import userReducer from './user/userSlice'
 import adminViewSlice from './AdminView/AdminViewSlice'
+import userSlice from './user/userSlice'
 
 export const store = configureStore({
   reducer: {
     // user: userReducer,
-    adminView: adminViewSlice
+    adminView: adminViewSlice,
+    user: userSlice
   },
 })
 

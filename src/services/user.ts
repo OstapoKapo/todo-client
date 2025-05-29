@@ -12,7 +12,22 @@ export const getAllUsers = async (): Promise<User[] | undefined> => {
     handleError(error);
   }
 }
-
+export const updateUserRole = async (role: "admin" | "viewer" | "editor", userId: string): Promise<User | undefined> => {
+  try{
+    const response = await api.patch(`/user/${userId}`, {role});
+    return response.data.user as User; 
+  }catch (error) {
+    handleError(error);
+  }
+}
+export const deleteUser = async (userId: string): Promise<User[] | undefined> => {
+  try{
+    const response = await api.delete(`/user/${userId}`);
+    return response.data.users as User[];
+  }catch (error) {
+    handleError(error);
+  }
+}
 function handleError(error: unknown): void {
     if (axios.isAxiosError(error) && error.response) {
       const errorData = error.response.data as ApiErrorResponse;

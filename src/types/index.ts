@@ -22,3 +22,11 @@ export interface UI {
     tittle: string;
     footer: string;
 }
+
+export interface Todo{
+    name:string,
+    deadline: string,
+    author?: string,
+    createdTime: number,
+    _id?: string,
+}
