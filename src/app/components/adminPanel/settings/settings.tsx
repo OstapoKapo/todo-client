@@ -2,7 +2,7 @@
 import styles from './settings.module.scss';
 import { getUI, updateUI } from "@/services/ui";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {setNewUI} from "@/store/AdminView/AdminViewSlice";
 
 

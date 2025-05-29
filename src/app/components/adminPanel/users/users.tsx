@@ -38,7 +38,7 @@ const UsersComponent = () => {
             <h1>Users</h1>
             <p>This is the all users of the admin panel.</p>
             <div className={styles.container}>
-                {users?.map((user, index)=>(
+                {users?.map((user)=>(
                     <div key={user._id} className={styles.itemContainer}>
                         <div className={styles.item}>
                             <div>

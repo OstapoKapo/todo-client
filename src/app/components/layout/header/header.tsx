@@ -3,7 +3,7 @@ import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import styles from './header.module.scss';
 import Image from 'next/image';
 import { usePathname, useRouter } from 'next/navigation';
-import { fetchAdminUI, setActiveSection, setNewUI } from '@/store/AdminView/AdminViewSlice'
+import { fetchAdminUI, setActiveSection } from '@/store/AdminView/AdminViewSlice'
 import { useEffect, useRef } from 'react';
 import { logout } from '@/services/auth';
 import { setUser } from '@/store/user/userSlice';
@@ -27,7 +27,7 @@ const Header: React.FC = () => {
     const handleChangesection = (e: React.MouseEvent<HTMLUListElement>) => {
         const target = e.target as HTMLLIElement;
         if(target.tagName === 'LI') {
-            for (let children of ul.current?.children as HTMLCollection) {
+            for (const children of ul.current?.children as HTMLCollection) {
                 if(children instanceof HTMLLIElement) {
                     children.classList.remove(styles.liActive);
                 }

@@ -4,7 +4,6 @@ import "./styles/reset.css"
 import Header from "@/app/components/layout/header/header";
 import Footer from "@/app/components/layout/footer/footer";
 import {ReduxProvider} from "@/app/components/layout/provider/provider";
-import { getUI } from "@/services/ui";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",

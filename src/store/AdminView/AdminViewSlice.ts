@@ -28,8 +28,12 @@ export const fetchAdminUI = createAsyncThunk(
         throw new Error('UI data not found');
       }
       return { tittle: response.tittle, footer: response.footer };
-    } catch (err: any) {
-      return rejectWithValue(err.message || 'Unknown error');
+    } catch (err) {
+      let errorMessage = 'Unknown error';
+      if (err instanceof Error) {
+        errorMessage = err.message;
+      }
+      return rejectWithValue(errorMessage);
     }
   }
 );

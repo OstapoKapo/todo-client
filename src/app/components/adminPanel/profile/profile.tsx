@@ -12,8 +12,7 @@ const ProfileComponent = () => {
     const dispatch = useAppDispatch();
     const {data} = user;
 
-    const handleChangeRole = async (e: React.MouseEvent<HTMLButtonElement>) => {
-       console.log(role)
+    const handleChangeRole = async () => {
        const newUser = await updateUserRole(role, data?._id as string);
        dispatch(setUser(newUser))
     }

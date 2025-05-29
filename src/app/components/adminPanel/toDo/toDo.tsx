@@ -1,8 +1,7 @@
 'use client';
 import Image from 'next/image';
 import styles from './todo.module.scss';
-import { use, useEffect, useState } from 'react';
-import { create } from 'domain';
+import { useEffect, useState } from 'react';
 import { useAppSelector } from '@/store/hooks';
 import { createdTodo, deleteTodo, getAllTodo } from '@/services/todo';
 import { Todo } from '@/types';
@@ -93,7 +92,7 @@ const ToDoComponent = () => {
                         <button>Delete</button>
                     </div>
                     <div  className={styles.container}>
-                        {todos.map((todo, index) => (
+                        {todos.map((todo) => (
                             <div key={todo._id} className={styles.item}>
                             <p>{todo.name}</p>
                             <p>{todo.author}</p>
